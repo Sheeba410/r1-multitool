@@ -1,26 +1,51 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Install Multitool on R1</title>
-  <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
-  <style>
-    body { font-family: sans-serif; text-align: center; padding: 20px; }
-    #qrcode { display: inline-block; margin-top: 20px; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Install Multitool</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #0e0e10; color: #fff;
+  font-family: -apple-system, sans-serif;
+  min-height: 100vh;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 32px;
+}
+h1 { font-size: 22px; font-weight: 700; margin-bottom: 8px; color: #fff; }
+p { font-size: 14px; color: rgba(255,255,255,0.45); margin-bottom: 32px; text-align: center; }
+#qr { margin-bottom: 20px; }
+.url { font-size: 11px; color: rgba(255,255,255,0.25); word-break: break-all; text-align: center; max-width: 300px; }
+</style>
 </head>
 <body>
-  <h1>Scan with your R1</h1>
-  <p>Open the creations card → add via QR code → scan this.</p>
-  <div id="qrcode"></div>
+<h1>Multitool</h1>
+<p>Scan with your Rabbit R1 to install.</p>
+<div id="qr"></div>
+<div class="url" id="url-label"></div>
+<script src="https://unpkg.com/qr-code-styling@1.6.0/lib/qr-code-styling.js"></script>
+<script>
+  var creationUrl = 'https://sheeba410.github.io/r1-multitool/multitool/?v=1';
+  document.getElementById('url-label').textContent = creationUrl;
 
-  <script>
-    var creationUrl = "https://sheeba410.github.io/r1-multitool/multitool/?v=1";
-    new QRCode(document.getElementById("qrcode"), {
-      text: creationUrl,
-      width: 256,
-      height: 256
-    });
-  </script>
+  var qrData = JSON.stringify({
+    title: "Multitool",
+    url: creationUrl,
+    description: "Encoding and decoding multitool (Base64, hex, URL)",
+    iconUrl: "",
+    themeColor: "#e35a2b"
+  });
+
+  var qrCode = new QRCodeStyling({
+    width: 260, height: 260,
+    data: qrData,
+    dotsOptions: { color: "#ffffff", type: "rounded" },
+    backgroundOptions: { color: "#0e0e10" },
+    cornersSquareOptions: { color: "#FE5000", type: "extra-rounded" },
+    cornersDotOptions: { color: "#FE5000" }
+  });
+  qrCode.append(document.getElementById('qr'));
+</script>
 </body>
 </html>
