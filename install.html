@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Install Multitool on R1</title>
+  <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+  <style>
+    body { font-family: sans-serif; text-align: center; padding: 20px; }
+    #qrcode { display: inline-block; margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <h1>Scan with your R1</h1>
+  <p>Open the creations card → add via QR code → scan this.</p>
+  <div id="qrcode"></div>
+
+  <script>
+    var creationUrl = "https://sheeba410.github.io/r1-multitool/";
+    new QRCode(document.getElementById("qrcode"), {
+      text: creationUrl,
+      width: 256,
+      height: 256
+    });
+  </script>
+</body>
+</html>
